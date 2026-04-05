@@ -1,0 +1,22 @@
+# Exclude the virtual environment
+
+venv/
+
+# Exclude the environment variables file
+
+.env
+
+# Exclude Python cache files
+
+__pycache__/
+*.pyc
+
+# Exclude build artifacts
+
+dist/
+build/
+*.egg-info
+
+# Exclude macOS specific files
+
+.DS_Store
