@@ -1,3 +1,16 @@
+---
+title: Expense Audit Env
+emoji: 🌖
+colorFrom: green
+colorTo: blue
+sdk: docker
+pinned: false
+license: mit
+short_description: AI-powered environment for auditing employee expense reports
+---
+
+
+
 # Expense Report Auditing Environment
 
 This project is an AI-powered environment for auditing employee expense reports based on a set of company policies. It is designed as a challenge for the Meta Llama 3 Hackathon, where the goal is to build an AI agent that can accurately and efficiently audit expense claims.
