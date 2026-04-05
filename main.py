@@ -173,6 +173,74 @@ def run_baseline():
 
     return results
 
+@app.get("/health", summary="Health Check", tags=["System"])
+def health():
+    return {"status": "healthy"}
+
+
+@app.get("/metadata", summary="Environment Metadata", tags=["System"])
+def metadata():
+    return {
+        "name": "expense-audit-env",
+        "description": "An AI agent audits employee expense claims against company reimbursement policy",
+        "version": "1.0.0"
+    }
+
+
+@app.get("/schema", summary="Environment Schema", tags=["System"])
+def schema():
+    return {
+        "action": {
+            "type": "object",
+            "properties": {
+                "decision": {
+                    "type": "string",
+                    "enum": ["approve", "reject", "escalate"]
+                },
+                "reason": {
+                    "type": "string",
+                    "nullable": True
+                }
+            },
+            "required": ["decision"]
+        },
+        "observation": {
+            "type": "object",
+            "properties": {
+                "task_id": {"type": "string"},
+                "task_description": {"type": "string"},
+                "item_name": {"type": "string"},
+                "amount": {"type": "number"},
+                "category": {"type": "string"},
+                "vendor": {"type": "string"},
+                "date_of_expense": {"type": "string"},
+                "date_submitted": {"type": "string"},
+                "policy": {"type": "string"},
+                "history": {"type": "array", "items": {"type": "string"}}
+            }
+        },
+        "state": {
+            "type": "object",
+            "properties": {
+                "current_index": {"type": "integer"},
+                "actions": {"type": "array", "items": {"type": "string"}},
+                "done": {"type": "boolean"}
+            }
+        }
+    }
+
+
+@app.post("/mcp", summary="MCP Endpoint", tags=["System"])
+def mcp(request: dict = None):
+    return {
+        "jsonrpc": "2.0",
+        "result": {
+            "name": "expense-audit-env",
+            "description": "Expense report auditing environment for AI agents",
+            "version": "1.0.0"
+        },
+        "id": 1
+    }
 
 def _create_prompt(obs: Observation) -> str:
     """Helper function to create a standardized prompt for the AI."""
