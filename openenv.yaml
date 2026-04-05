@@ -1,0 +1,27 @@
+name: expense-audit-env
+description: "An AI agent audits employee expense claims against company reimbursement policy"
+version: "1.0.0"
+tasks:
+  - id: task_easy
+    name: Easy Audit
+    description: "3 expense items, one obvious policy violation"
+  - id: task_medium
+    name: Medium Audit
+    description: "5 items testing multiple policy rules"
+  - id: task_hard
+    name: Hard Audit
+    description: "9 items requiring pattern detection across the full episode"
+endpoints:
+  reset: /reset
+  step: /step
+  state: /state
+  tasks: /tasks
+  grader: /grader
+  baseline: /baseline
+reward_range:
+  min: -1.0
+  max: 2.0
+action_space:
+  - approve
+  - reject
+  - escalate
