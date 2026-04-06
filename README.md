@@ -9,56 +9,73 @@ license: mit
 short_description: AI-powered environment for auditing employee expense reports
 ---
 
-
-
 # Expense Report Auditing Environment
 
-This project is an AI-powered environment for auditing employee expense reports based on a set of company policies. It is designed as a challenge for the Meta Llama 3 Hackathon, where the goal is to build an AI agent that can accurately and efficiently audit expense claims.
+[![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-The environment is built with FastAPI and provides a set of API endpoints for an AI agent to interact with. The agent can reset the environment to a specific task, receive expense items one by one, and submit a decision (`approve`, `reject`, or `escalate`) for each.
+An AI-powered environment for auditing employee expense reports based on a set of company policies. This project is designed for AI agent competitions, where the goal is to build an agent that can accurately and efficiently audit expense claims.
+
+## Features
+
+- **Realistic Auditing Tasks:** Includes multiple tasks (Easy, Medium, Hard) to test an agent's ability to handle various policy violations.
+- **Dynamic Policy Engine:** Enforces a set of clear but complex company policies, including spending limits, date restrictions, and pattern-based rules.
+- **FastAPI Backend:** A robust and fast API for agent interaction, built with FastAPI.
+- **Baseline Agent:** Includes a baseline `inference.py` script with a pre-built agent using Groq's Llama 3.1 for quick testing.
+- **Dockerized for Deployment:** Comes with a `Dockerfile` ready for easy deployment on services like Hugging Face Spaces.
 
 ## How to Run Locally
 
-1.  **Set up Virtual Environment:**
-    Create and activate a Python virtual environment.
+### 1. Prerequisites
 
-    ```bash
-    # Create the environment
-    python -m venv venv
+- Python 3.11+
+- An API key from [Groq](https://console.groq.com/keys)
 
-    # Activate on Windows
-    .\venv\Scripts\activate
+### 2. Set up Virtual Environment
 
-    # Activate on macOS/Linux
-    source venv/bin/activate
-    ```
+Create and activate a Python virtual environment.
 
-2.  **Install Dependencies:**
-    Install all required libraries from `requirements.txt`.
+```bash
+# Create the environment
+python -m venv venv
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+# Activate on Windows
+.\venv\Scripts\activate
 
-3.  **Set Environment Variable:**
-    Create a `.env` file in the project root and add your Groq API key.
+# Activate on macOS/Linux
+source venv/bin/activate
+```
 
-    ```
-    # .env
-    GROQ_API_KEY=<your_api_key>
-    ```
+### 3. Install Dependencies
 
-    Replace `<your_api_key>` with your actual key.
+Install all required libraries from `requirements.txt`.
 
-4.  **Start the Server:**
-    Run the FastAPI application using Uvicorn.
+```bash
+pip install -r requirements.txt
+```
 
-    ```bash
-    uvicorn main:app --reload --port 8000
-    ```
+### 4. Set Environment Variable
 
-5.  **Access API Docs:**
-    Open your browser and navigate to [http://localhost:8000/docs](http://localhost:8000/docs) to see the interactive API documentation.
+Create a `.env` file in the project root and add your Groq API key.
+
+```
+# .env
+GROQ_API_KEY=<your_api_key>
+```
+
+Replace `<your_api_key>` with your actual key.
+
+### 5. Start the Server
+
+Run the FastAPI application using Uvicorn.
+
+```bash
+uvicorn main:app --reload --port 8000
+```
+
+### 6. Access API Docs
+
+Open your browser and navigate to [http://localhost:8000/docs](http://localhost:8000/docs) to see the interactive API documentation.
 
 ## How to Run the Baseline Script
 
