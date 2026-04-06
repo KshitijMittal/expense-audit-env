@@ -1,7 +1,7 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 from pydantic import BaseModel
 from models import Action, Observation
 from environment import ExpenseEnvironment, POLICY_TEXT
@@ -47,7 +47,7 @@ class GraderRequest(BaseModel):
 # --- API Endpoints ---
 
 @app.post("/reset", summary="Reset Environment", tags=["Environment"])
-def reset(req: ResetRequest):
+def reset(req: ResetRequest = Body(default=ResetRequest())):
     """
     Resets the environment to the beginning of a specified task.
 
