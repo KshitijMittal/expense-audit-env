@@ -9,9 +9,12 @@ load_dotenv()
 
 # These are the REQUIRED variable names per hackathon spec.
 # On HF Spaces, set these as Repository Secrets.
-API_BASE_URL = os.environ.get("API_BASE_URL", "https://api.groq.com/openai/v1")
-MODEL_NAME   = os.environ.get("MODEL_NAME",   "llama-3.1-8b-instant")
-HF_TOKEN     = os.environ.get("HF_TOKEN",     os.environ.get("GROQ_API_KEY", ""))
+API_BASE_URL = os.getenv("API_BASE_URL", "https://api.groq.com/openai/v1")
+MODEL_NAME   = os.getenv("MODEL_NAME", "llama-3.1-8b-instant")
+HF_TOKEN     = os.getenv("HF_TOKEN")
+
+# Optional - only needed if using from_docker_image()
+LOCAL_IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME")
 
 # The environment server URL — defaults to the Docker port used in HF Spaces.
 # Override with ENV_URL env var if running against a remote deployment.
@@ -30,7 +33,7 @@ Submit within 14 days
 
 # --- Validate required config ---
 if not HF_TOKEN:
-    print("Error: HF_TOKEN (or GROQ_API_KEY) is not set.", file=sys.stderr)
+    print("Error: HF_TOKEN is not set. Please set it as an environment variable.", file=sys.stderr)
     sys.exit(1)
 
 # --- AI Client — MUST use OpenAI client with above variables ---
