@@ -45,10 +45,10 @@ The environment is built with FastAPI and provides a set of API endpoints for an
 
     ```
     # .env
-    GROQ_API_KEY=your_key_here
+    GROQ_API_KEY=<your_api_key>
     ```
 
-    Replace `your_key_here` with your actual key from [groq.com](https://groq.com/).
+    Replace `<your_api_key>` with your actual key.
 
 4.  **Start the Server:**
     Run the FastAPI application using Uvicorn.
