@@ -36,7 +36,7 @@ env = ExpenseEnvironment()
 # --- Pydantic Models for Requests ---
 
 class ResetRequest(BaseModel):
-    task_id: str
+    task_id: str = "task_easy"
 
 
 class GraderRequest(BaseModel):
