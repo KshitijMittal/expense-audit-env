@@ -12,13 +12,13 @@ VALID_ACTIONS = {"approve", "reject", "escalate"}
 # The API key is loaded from the .env file.
 try:
     groq_api_key = os.environ["GROQ_API_KEY"]
-    if not groq_api_key or groq_api_key == "your_key_here":
+    if not groq_api_key or groq_api_key == "<your_api_key>":
         print("Error: GROQ_API_KEY is not set or is invalid.")
-        print("Please create a .env file and add your key: GROQ_API_KEY=your_key_here")
+        print("Please create a .env file and add your key: GROQ_API_KEY=<your_api_key>")
         exit(1)
 except KeyError:
     print("Error: GROQ_API_KEY not found in environment variables.")
-    print("Please create a .env file with your key: GROQ_API_KEY=your_key_here")
+    print("Please create a .env file with your key: GROQ_API_KEY=<your_api_key>")
     exit(1)
 
 client = OpenAI(
