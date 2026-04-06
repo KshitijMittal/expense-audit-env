@@ -16,13 +16,16 @@ app = FastAPI(
 )
 
 # --- AI Client Setup ---
-# The API key is loaded from the .env file.
-# Ensure you have a .env file with GROQ_API_KEY="your-key-here"
+# Reads the standardised hackathon variables.
+# Falls back to Groq defaults so local dev still works with GROQ_API_KEY.
+_api_base = os.environ.get("API_BASE_URL", "https://api.groq.com/openai/v1")
+_api_key  = os.environ.get("HF_TOKEN", os.environ.get("GROQ_API_KEY", ""))
+
 client = OpenAI(
-    base_url="https://api.groq.com/openai/v1",
-    api_key=os.environ.get("GROQ_API_KEY"),
+    base_url=_api_base,
+    api_key=_api_key,
 )
-AI_MODEL = "llama-3.1-8b-instant"
+AI_MODEL = os.environ.get("MODEL_NAME", "llama-3.1-8b-instant")
 VALID_ACTIONS = {"approve", "reject", "escalate"}
 
 # --- Global Environment ---
