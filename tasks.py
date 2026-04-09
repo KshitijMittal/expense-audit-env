@@ -125,4 +125,6 @@ def grade(actions: List[str], correct_answers: List[str]) -> float:
     for a, b in zip(actions, correct_answers):
         if a.lower() == b.lower():
             correct += 1
-    return correct / len(correct_answers)
+    raw_score = correct / len(correct_answers)
+    epsilon = 0.001
+    return min(max(raw_score, epsilon), 1.0 - epsilon)
