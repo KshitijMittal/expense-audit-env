@@ -105,11 +105,11 @@ class ExpenseEnvironment:
 
         # Reward logic
         if action.decision.lower() == correct_decision:
-            reward_score = 1.0
+            reward_score = 0.999
             reward_text = f"Decision: {correct_decision.upper()} | Reason: {explanation}"
             confidence = 1.0
         else:
-            reward_score = -1.0
+            reward_score = 0.001
             reward_text = f"Expected: {correct_decision.upper()} | Reason: {explanation}"
             confidence = 0.5
 
