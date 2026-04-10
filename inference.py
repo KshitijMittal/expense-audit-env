@@ -136,7 +136,7 @@ def run_inference():
             final_scores[task_id] = score
 
             # --- [END] log — required by hackathon spec ---
-            print(f"[END] task_id={task_id} score={score:.2f}", flush=True)
+            print(f"[END] task_id={task_id} score={score:.4f}", flush=True)
 
     # Summary
     print("\n--- Inference Complete ---")
