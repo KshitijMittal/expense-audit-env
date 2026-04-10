@@ -19,8 +19,8 @@ endpoints:
   grader: /grader
   baseline: /baseline
 reward_range:
-  min: 0.0
-  max: 1.0
+  min: 0.001
+  max: 0.999
 action_space:
   - approve
   - reject
